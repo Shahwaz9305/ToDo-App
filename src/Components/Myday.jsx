@@ -1,18 +1,13 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import Sidebar from './Sidebar'
 
-
-
-function Home() {
+function Myday() {
   return (
-
     <Box sx={{position:'absolute',top:'11vh',left:'20vw'}} >
-      Home
+      my day
+          
     </Box>
-  
-
   )
 }
 
-export default Home
+export default Myday
