@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "taskDescription": "Create a daily schedule for a remote marketing team, including stand-ups, collaborative work blocks, and individual focus time.",
+    "important": true,
+    "date": "2025-07-15",
+    "time": "10:00 AM"
+  },
+  {
+    "id": 2,
+    "taskDescription": "Draft a compelling social media campaign for a new eco-friendly product, targeting Gen Z on Instagram and TikTok.",
+    "important": true,
+    "date": "2025-07-20",
+    "time": "02:30 PM"
+  },
+  {
+    "id": 3,
+    "taskDescription": "Develop a user-friendly onboarding flow for a mobile banking application, focusing on intuitive navigation and clear instructions.",
+    "important": false,
+    "date": "2025-07-25",
+    "time": "11:00 AM"
+  },
+  {
+    "id": 4,
+    "taskDescription": "Write a detailed project proposal for developing a new internal communication platform for a company with 500+ employees.",
+    "important": true,
+    "date": "2025-08-01",
+    "time": "09:00 AM"
+  },
+  {
+    "id": 5,
+    "taskDescription": "Design a wireframe for a responsive e-commerce website that sells handmade crafts, ensuring a seamless experience on desktop and mobile.",
+    "important": false,
+    "date": "2025-08-05",
+    "time": "03:00 PM"
+  },
+  {
+    "id": 6,
+    "taskDescription": "Research and summarize the latest trends in AI and machine learning for a non-technical executive audience.",
+    "important": true,
+    "date": "2025-08-10",
+    "time": "01:00 PM"
+  },
+  {
+    "id": 7,
+    "taskDescription": "Create a budget spreadsheet for a small non-profit organization, tracking income, expenses, and grant allocations.",
+    "important": true,
+    "date": "2025-08-15",
+    "time": "10:30 AM"
+  },
+  {
+    "id": 8,
+    "taskDescription": "Develop a script for a 3-minute explainer video about a new software feature, making complex concepts easy to understand.",
+    "important": false,
+    "date": "2025-08-20",
+    "time": "04:00 PM"
+  },
+  {
+    "id": 9,
+    "taskDescription": "Outline a training program for new customer service representatives, covering product knowledge, communication skills, and conflict resolution.",
+    "important": false,
+    "date": "2025-08-25",
+    "time": "09:30 AM"
+  },
+  {
+    "id": 10,
+    "taskDescription": "Plan a virtual team-building event for a distributed team, incorporating interactive games and opportunities for informal connection.",
+    "important": false,
+    "date": "2025-08-30",
+    "time": "02:00 PM"
+  },
+  {
+    "id": 11,
+    "taskDescription": "Review and provide feedback on the Q3 marketing report.",
+    "important": true,
+    "date": "2025-05-30",
+    "time": "02:00 PM"
+  },
+  {
+    "id": 12,
+    "taskDescription": "Schedule a meeting with the design team to discuss the new website mockups.",
+    "important": true,
+    "date": "2025-05-30",
+    "time": "03:30 PM"
+  },
+  {
+    "id": 13,
+    "taskDescription": "Finalize the agenda for the upcoming client presentation.",
+    "important": false,
+    "date": "2025-05-30",
+    "time": "04:00 PM"
+  }
+]

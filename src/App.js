@@ -10,26 +10,28 @@ import Important from './Components/Important';
 import Planned from './Components/Planned';
 import AssignedToMe from './Components/AssignedToMe';
 import ThemeSelector from './Components/ThemeSelector';
+// import TaskContainer from './Components/TaskContainer';
+import { SearchProvider } from './SearchContext';
 
 
 function App() {
   return (
- <>
+<SearchProvider>
       <BrowserRouter>
         <Navbar/>
-
         <Box display={'flex'}>
           <Box flex={2}>
               <Sidebar/>
           </Box>
         <Box flex={8}>
           <ThemeSelector/>
+          {/* <TaskContainer/> */}
         <Routes>
           <Route
             path="/"
             exact
             element={
-              <Home/>
+              <Myday/>
             }
           />
           <Route
@@ -39,13 +41,13 @@ function App() {
               <Tasks/>
             }
           />
-          <Route
+          {/* <Route
             path="/myday"
             exact
             element={
               <Myday/>
             }
-          />
+          /> */}
           <Route
             path="/important"
             exact
@@ -65,6 +67,7 @@ function App() {
             exact
             element={
               <AssignedToMe/>
+              
             }
           />
         </Routes>
@@ -72,7 +75,7 @@ function App() {
 
         </Box>
       </BrowserRouter>
-    </>
+    </SearchProvider>
   );
 }
 

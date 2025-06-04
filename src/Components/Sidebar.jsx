@@ -13,7 +13,7 @@ function Sidebar() {
   return (
     <Box position={'relative'} sx={{width:"20vw",height:'89vh',color:'white',backgroundColor:"#121212"}}>
       <Stack spacing={'1'}>
-              <Link className="link" to={'/myday'}>
+              <Link className="link" to={'/'}>
               <Stack  padding={'1rem'} display={'flex'} alignItems={'center'} justifyContent={'flex-start'} spacing={1} direction={'row'} sx={{  '&:hover': {
               backgroundColor: '#262F37',
               color:'#42A5F5',

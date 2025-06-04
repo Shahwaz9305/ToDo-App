@@ -103,7 +103,7 @@ const [backgroundStyle, setBackgroundStyle]= useState('#BBDEFB');
         className='p-6 rounded-lg shadow-xl mt-8 bg-white bg-opacity-90 backdrop-blur-sm'
         >
             {/* Theme selection icon button */}
-          <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
+          <Box sx={{ position: 'absolute', top: 16, right: 16 ,zIndex:1000}}>
             <IconButton
               color="primary"
               aria-label="select theme"
