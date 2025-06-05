@@ -1,15 +1,14 @@
 import { Grid, Stack } from '@mui/material';
 import TaskCard from './TaskCard';
-import React, { useState, useContext } from 'react'; // Import useContext
+import React, { useContext } from 'react'; // Import useContext
 import { SearchContext } from '../SearchContext'; // Import the context
 
 function TaskContainer({data}) {
-
+console.log(data)
   const { searchQuery } = useContext(SearchContext);
 
   
-const filteredTasks = Array.isArray(data)
-    ? data.filter(task =>task.taskDescription.toLowerCase().includes(searchQuery.toLowerCase())
+const filteredTasks = Array.isArray(data)? data.filter(task =>task.description.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
 

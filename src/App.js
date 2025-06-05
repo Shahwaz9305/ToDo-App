@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
+// import Home from './Components/Home';
 import { Box } from '@mui/material';
 import Sidebar from './Components/Sidebar';
 import Tasks from './Components/Tasks';
@@ -12,10 +12,15 @@ import AssignedToMe from './Components/AssignedToMe';
 import ThemeSelector from './Components/ThemeSelector';
 // import TaskContainer from './Components/TaskContainer';
 import { SearchProvider } from './SearchContext';
+import {Provider} from "react-redux"
+// import { AppsOutageRounded } from '@mui/icons-material';
+import store from './Store/store';
+import AddTaskInput from './Components/AddTaskInput';
 
 
 function App() {
   return (
+<Provider store={store}>
 <SearchProvider>
       <BrowserRouter>
         <Navbar/>
@@ -71,11 +76,13 @@ function App() {
             }
           />
         </Routes>
+        <AddTaskInput/>
         </Box>
 
         </Box>
       </BrowserRouter>
     </SearchProvider>
+    </Provider>
   );
 }
 

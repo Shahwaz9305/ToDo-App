@@ -3,14 +3,18 @@ import React from 'react'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 import TaskContainer from './TaskContainer'
-import tasksData from '../Assets/Data/task_data.json'
+// import tasksData from '../Assets/Data/task_data.json'
+import { useSelector } from 'react-redux';
+
 function Tasks() {
+  const tasksData= useSelector(store=> store.task)
+  // console.log(tasksData);
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
     const day = String(today.getDate()).padStart(2, '0');
     const todayDateString = `${year}-${month}-${day}`;
-    const data = Array.isArray(tasksData) ? tasksData.filter(task => task.date !== todayDateString&&task.important !== true) : [];
+    const data = Array.isArray(tasksData) ? tasksData.filter(task => task.date !== todayDateString&&task.isImportant !== true) : [];
   // const data = tasksData;
   return (
     <Box sx={{position:'absolute',top:'11vh',left:'20vw'}}>

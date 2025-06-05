@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -12,52 +12,65 @@ import DeleteIcon from '@mui/icons-material/Delete'; // Delete icon
 import SaveIcon from '@mui/icons-material/Save'; // Save icon
 import CancelIcon from '@mui/icons-material/Cancel'; // Cancel icon
 import Box from '@mui/material/Box'; // For layout
+import { useDispatch } from 'react-redux';
+import {deleteTask,toggleTask,editTaskDescripTion,updateTaskImportant,toggleTaskCompletion} from '../Store/taskSlice';
 
 function TaskCard({ task, onEdit, onDelete }) {
-  const [isFavorite, setIsFavorite] = useState(task.important);
-  const [checked, setChecked] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(task.isImportant);
+  const [checked, setChecked] = useState(task.completed);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedDescription, setEditedDescription] = useState(task.taskDescription);
+  const [editedDescription, setEditedDescription] = useState(task.description);
+  const dispatch = useDispatch();
 
+
+    useEffect(() => {
+    setIsFavorite(task.isImportant);
+    setChecked(task.completed);
+    setEditedDescription(task.description);
+  }, [task]);
   // Toggle favorite status
   const handleToggleFavorite = () => {
     const newFavoriteStatus = !isFavorite;
     setIsFavorite(newFavoriteStatus);
-    // Call onEdit to update the parent's state for 'important' status
-    if (onEdit) {
-      onEdit(task.id, { ...task, important: newFavoriteStatus });
-    }
+    // HIGHLIGHT: Dispatch updateTaskImportant action to Redux
+    dispatch(updateTaskImportant({ id: task.id, isImportant: newFavoriteStatus }));
   };
 
   // Handle checkbox change for task completion
   const handleChangeCheckbox = (event) => {
-    setChecked(event.target.checked);
+    const newCheckedStatus = event.target.checked;
+    setChecked(newCheckedStatus);
+    // HIGHLIGHT: Dispatch toggleTaskCompletion action to Redux
+    dispatch(toggleTaskCompletion({ id: task.id, completed: newCheckedStatus }));
   };
 
   // Handle edit button click
   const handleEditClick = () => {
     setIsEditing(true);
+    // HIGHLIGHT: Ensure editedDescription is set to current task.description when entering edit mode
+    setEditedDescription(task.description);
   };
 
   // Handle save button click during editing
   const handleSaveClick = () => {
-    if (onEdit) {
-      onEdit(task.id, { ...task, taskDescription: editedDescription });
+    console.log(editedDescription.trim())
+    if (editedDescription.trim() !== task.description) {
+      // HIGHLIGHT: Dispatch editTaskDescription action to Redux
+      console.log(editedDescription.trim())
+      dispatch(editTaskDescripTion({ id: task.id, newDescription: editedDescription.trim() }));
     }
-    setIsEditing(false); // Corrected: Set to false to exit editing mode
+    setIsEditing(false); 
   };
 
   // Handle cancel button click during editing
   const handleCancelClick = () => {
-    setEditedDescription(task.taskDescription); // Revert to original description
+    setEditedDescription(task.description);
     setIsEditing(false);
   };
 
   // Handle delete button click
   const handleDeleteClick = () => {
-    if (onDelete) {
-      onDelete(task.id);
-    }
+    dispatch(deleteTask(task.id))
   };
 
   return (
@@ -97,7 +110,7 @@ function TaskCard({ task, onEdit, onDelete }) {
               fontSize: '1rem', // Adjust font size as needed
             }}
           >
-            {task.taskDescription}
+            {task.description}
           </Typography>
         )}
       </CardContent>
@@ -120,7 +133,7 @@ function TaskCard({ task, onEdit, onDelete }) {
             {/* Edit Button */}
             <IconButton onClick={handleEditClick} color="inherit" aria-label="edit task">
               <EditIcon sx={{ color: '#7c7b7b', fontSize: '1.5rem' }} />
-            </IconButton>
+            </IconButton >
             {/* Delete Button */}
             <IconButton onClick={handleDeleteClick} color="inherit" aria-label="delete task">
               <DeleteIcon sx={{ color: '#7c7b7b', fontSize: '1.5rem' }} />
