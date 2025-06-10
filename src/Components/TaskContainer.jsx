@@ -1,16 +1,28 @@
-import { Grid, Stack } from '@mui/material';
+import { Grid, Pagination, Stack } from '@mui/material';
 import TaskCard from './TaskCard';
-import React, { useContext } from 'react'; // Import useContext
+import React, { useContext, useState } from 'react'; // Import useContext
 import { SearchContext } from '../SearchContext'; // Import the context
 
 function TaskContainer({data}) {
 console.log(data)
   const { searchQuery } = useContext(SearchContext);
+  const [currentPage,setCurrentPage] = useState(1);
+  const taskPerPage = 5;
 
   
 const filteredTasks = Array.isArray(data)? data.filter(task =>task.description.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
+
+const totalPages = Math.ceil(filteredTasks.length/taskPerPage);
+const indexOfLastTask = currentPage * taskPerPage;
+const indexOfFirstTask = indexOfLastTask-taskPerPage;
+const currentTasks = filteredTasks.slice(indexOfFirstTask,indexOfLastTask);
+
+const handlePageChange = (event,value)=>{
+  setCurrentPage(value);
+} 
+  
 
   return (
 
@@ -45,12 +57,23 @@ const filteredTasks = Array.isArray(data)? data.filter(task =>task.description.t
           scrollbarColor: 'rgba(0, 0, 0, 0.2) transparent', // thumb color track color
         }}>
       <Grid size={12} container  >
-        {filteredTasks.map((task) => (
+        {currentTasks.map((task) => (
           <Grid size={12}  key={task.id}> 
             <TaskCard task={task} /> 
           </Grid>
         ))}
-      </Grid>
+      </Grid>{totalPages>1 &&(
+      <Pagination 
+      count = {totalPages}
+      page = {currentPage}
+      onChange={handlePageChange}
+      color='primary'
+      sx={{
+        marginTop:'1rem',
+        paddingBottom:'1rem',
+      }}
+      />
+      )}
       </Stack>
     
   )
