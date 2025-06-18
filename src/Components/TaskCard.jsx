@@ -74,7 +74,7 @@ function TaskCard({ task, onEdit, onDelete }) {
   };
 
   return (
-    <Card sx={{ display: 'flex', alignItems: 'center', width: 'auto', p: 1, my: 1, borderRadius: '8px', boxShadow: 3 }}>
+    <Card sx={{ display: 'flex', alignItems: 'center', width: '65vw', p: 1, my: 1, borderRadius: '8px', boxShadow: 3 }}>
       {/* Checkbox for task completion */}
       <Checkbox
         checked={checked}
@@ -87,13 +87,15 @@ function TaskCard({ task, onEdit, onDelete }) {
         {isEditing ? (
           // Render TextField when in editing mode
           <TextField
-            fullWidth
+            // fullWidth
+            
             variant="outlined"
             value={editedDescription}
             onChange={(e) => setEditedDescription(e.target.value)}
             size="small"
             sx={{
               '& .MuiOutlinedInput-root': {
+                // width:'80vw',
                 borderRadius: '8px',
                 backgroundColor: '#f5f5f5',
               },

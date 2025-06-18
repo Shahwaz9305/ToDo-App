@@ -29,7 +29,8 @@ const handlePageChange = (event,value)=>{
       <Stack direction={'column'}
         sx={{
           position:'absolute',
-          top:0,left:'5vw',
+          top:0,
+          left:'5vw',
           marginTop:"3rem",
           zIndex: 100,
           maxHeight: '60vh',
@@ -56,7 +57,7 @@ const handlePageChange = (event,value)=>{
           scrollbarWidth: 'thin', // "auto" or "thin"
           scrollbarColor: 'rgba(0, 0, 0, 0.2) transparent', // thumb color track color
         }}>
-      <Grid size={12} container  >
+      <Grid >
         {currentTasks.map((task) => (
           <Grid size={12}  key={task.id}> 
             <TaskCard task={task} /> 

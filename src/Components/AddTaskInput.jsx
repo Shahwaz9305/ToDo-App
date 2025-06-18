@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../Store/taskSlice';
 import { v4 as uuidv4 } from 'uuid';
+import SendIcon from '@mui/icons-material/Send';
+
+
 
 // Material-UI Imports
 import { Box, TextField, IconButton, InputAdornment, Checkbox, FormControlLabel, Typography } from '@mui/material';
@@ -156,6 +159,7 @@ function AddTaskInput() {
           variant="standard"
           value={dueDate}
           onChange={handleDateChange}
+           required
           sx={{
             color: '#fff', // Text color for date
             '& .MuiInputBase-input': {
@@ -240,8 +244,10 @@ function AddTaskInput() {
           }}
         />
       </Box>
+      <IconButton type="submit" aria-label="send task" sx={{ color: '#fff' }}> {/* Added IconButton */}
+        <SendIcon />
+      </IconButton>
     </Box>
   )
 }
-
 export default AddTaskInput
